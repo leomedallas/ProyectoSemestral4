@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerMovement : MonoBehaviour
+public class Player : MonoBehaviour
 {
     public Controls input;
+    public int life = 20;
     public int speed;
     Rigidbody rb;
+    public Collider HitCol;
 
     void Start()
     {
@@ -31,5 +33,14 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         Keyboard kb = InputSystem.GetDevice<Keyboard>(); 
+    }
+
+    //Coroutine for player receiving damage
+    IEnumerator ReceiveDamage()
+    {
+        HitCol.enabled = false;
+        life = life - 2;
+        yield return new WaitForSeconds(2);
+        HitCol.enabled = true;
     }
 }

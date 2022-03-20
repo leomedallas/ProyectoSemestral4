@@ -411,6 +411,51 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &556976823
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 556976824}
+  - component: {fileID: 556976825}
+  m_Layer: 0
+  m_Name: HitCollider
+  m_TagString: PlayerCollider
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &556976824
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 556976823}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1681452600}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &556976825
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 556976823}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.52012587
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0.0016913414, y: 0, z: 0.0048101544}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -700,6 +745,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5e288a90ab25fc48b71537b80328ea8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Player: {fileID: 1681452602}
   Target: {fileID: 1681452596}
   Target_Transform: {fileID: 1681452600}
   speed: 2
@@ -799,7 +845,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -10.62, y: 2.05, z: 0.44}
   m_LocalScale: {x: 2, y: 2, z: 2}
-  m_Children: []
+  m_Children:
+  - {fileID: 556976824}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -861,7 +908,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57fe8b1b23e5b59449952ea685cd10fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 15
+  life: 20
+  speed: 10
+  HitCol: {fileID: 556976825}
 --- !u!54 &1681452603
 Rigidbody:
   m_ObjectHideFlags: 0

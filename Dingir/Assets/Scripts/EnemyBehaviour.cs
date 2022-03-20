@@ -7,6 +7,7 @@ public class EnemyBehaviour : MonoBehaviour
     
     [HideInInspector] Rigidbody rb;
     [HideInInspector] BoxCollider BoxCol;
+    public Player Player;
 
     [Header("Targets")]
     public GameObject Target;
@@ -50,7 +51,7 @@ public class EnemyBehaviour : MonoBehaviour
         //Raycast hit detection
         if(Physics.Raycast(ray, out hit, 1))
         {
-            if (hit.collider.gameObject.tag == "Player")
+            if (hit.collider.isTrigger)
             { 
                 Attack();
             }
@@ -65,6 +66,7 @@ public class EnemyBehaviour : MonoBehaviour
     void Attack()
     {
         print("Hit someone");
+        Player.StartCoroutine("ReceiveDamage");
     }
 
     //Moving behaviour
