@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
 {
     public Controls input;
     public int life = 20;
-    public int speed;
+    [SerializeField] private int speed = 15;
     Rigidbody rb;
     public Collider HitCol;
 
@@ -15,7 +15,6 @@ public class Player : MonoBehaviour
     {
         input = new Controls();
         input.Enable();
-        //input.Player.Movement.performed += Move;
         rb = GetComponent<Rigidbody>();
     }
 

@@ -745,9 +745,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5e288a90ab25fc48b71537b80328ea8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 1681452602}
-  Target: {fileID: 1681452596}
-  Target_Transform: {fileID: 1681452600}
+  player: {fileID: 0}
+  target: {fileID: 0}
+  targetTransform: {fileID: 0}
   speed: 2
   health: 20
 --- !u!1 &1681452596
