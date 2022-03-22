@@ -7,15 +7,18 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     public Controls input;
-    public int life = 20;
     [SerializeField] private int speed = 15;
-    Rigidbody rb;
+
+    public int life = 20;
     public Collider HitCol;
+
+    Rigidbody rb;
 
     void Start()
     {
         input = new Controls();
         input.Enable();
+
         rb = GetComponent<Rigidbody>();
     }
 
@@ -32,7 +35,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        Keyboard kb = InputSystem.GetDevice<Keyboard>(); 
+        Keyboard kb = InputSystem.GetDevice<Keyboard>();
     }
 
     //Coroutine for player receiving damage

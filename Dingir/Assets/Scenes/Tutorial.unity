@@ -745,9 +745,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5e288a90ab25fc48b71537b80328ea8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  target: {fileID: 0}
-  targetTransform: {fileID: 0}
+  player: {fileID: 1681452602}
+  target: {fileID: 1681452596}
+  targetTransform: {fileID: 1681452600}
   speed: 2
   health: 20
 --- !u!1 &1681452596
@@ -891,22 +891,6 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: bd195833-9c14-4357-bef3-2a9a3e90723d
     m_ActionName: Player/Movement[/Keyboard/a,/Keyboard/d,/Keyboard/w,/Keyboard/s]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1681452602}
-        m_TargetAssemblyTypeName: Player, Assembly-CSharp
-        m_MethodName: Jump
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 38cf9ba3-ae61-470d-a274-a1db5cc8bfae
-    m_ActionName: Player/Jump[/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
