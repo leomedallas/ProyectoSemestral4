@@ -1162,6 +1162,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LittleEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 8419482124370157827, guid: 0f0a3c671f688d9498d5667430289b98, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8419482124370157839, guid: 0f0a3c671f688d9498d5667430289b98, type: 3}
       propertyPath: m_RootOrder
       value: 4
