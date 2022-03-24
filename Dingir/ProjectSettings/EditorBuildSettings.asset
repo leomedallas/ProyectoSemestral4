@@ -11,4 +11,5 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PlayerAttackTest.unity
     guid: 29f12ea294207cd479312b1c4e95d9ae
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: b49b8e994cab22d44914a841410b14d9, type: 2}

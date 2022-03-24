@@ -11,8 +11,10 @@ public class Player : MonoBehaviour
 
     public int life = 20;
     public Collider HitCol;
+    Vector3 dir;
 
     Rigidbody rb;
+    public float jumpForce;
 
     void Start()
     {
@@ -26,17 +28,20 @@ public class Player : MonoBehaviour
     {
         input.Disable();
     }
+    private void FixedUpdate()
+    {
+        rb.velocity = new Vector3(dir.x * speed, 0, dir.z * speed);
+    }
+    public void Jump(InputAction.CallbackContext ctx)
+    {
+        rb.AddForce(transform.up * jumpForce);
+    }
 
     public void Move(InputAction.CallbackContext ctx)
     {
-        Vector3 dir = ctx.ReadValue<Vector3>();
-        rb.velocity = new Vector3(dir.x * speed, 0, dir.z * speed);
+        dir = ctx.ReadValue<Vector3>();
     }
 
-    void Update()
-    {
-        Keyboard kb = InputSystem.GetDevice<Keyboard>();
-    }
 
     //Coroutine for player receiving damage
     IEnumerator ReceiveDamage()
