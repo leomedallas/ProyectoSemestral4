@@ -9,16 +9,18 @@ public class Player : MonoBehaviour
 
     [Header("Health Values")]
     public HealthBar healthBar;
-    public int MaxLife = 20;
-    public int currentLife;
+    public int maxHealth = 20;
+    public int currentHealth;
 
+    [Header("Movement Values")]
     public int speed;
     Rigidbody rb;
     public Collider HitCol;
 
     void Start()
     {
-        currentLife = MaxLife;
+        currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
 
         input = new Controls();
         input.Enable();
@@ -39,14 +41,20 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        Keyboard kb = InputSystem.GetDevice<Keyboard>(); 
+        //Keyboard kb = InputSystem.GetDevice<Keyboard>(); 
+    }
+
+    public void TakeDamage(int _damage)
+    {
+        currentHealth -= _damage;
+        healthBar.SetHealth(currentHealth);
     }
 
     //Coroutine for player receiving damage
-    IEnumerator ReceiveDamage(int damage)
+    IEnumerator ReceiveDamage(int _damage)
     {
         HitCol.enabled = false;
-        currentLife = currentLife -= damage;
+        TakeDamage(_damage);
         yield return new WaitForSeconds(2);
         HitCol.enabled = true;
     }

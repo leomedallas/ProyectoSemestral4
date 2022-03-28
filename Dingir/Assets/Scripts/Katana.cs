@@ -17,11 +17,8 @@ public class Katana : MonoBehaviour
     private void Update()
     {
         bool space = Keyboard.current.spaceKey.wasPressedThisFrame;
-        if (space && !attacking)
-        {
+        if (space && !attacking) 
             Combo();
-        }
-        
     }
 
     public void StartCombo()
@@ -34,8 +31,7 @@ public class Katana : MonoBehaviour
     public void Combo()
     {
         attacking = true;
-        anim.SetTrigger("" + combo);
-        
+        anim.SetTrigger("" + combo);  
     }
 
     public void FinishCombo()
