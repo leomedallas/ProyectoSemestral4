@@ -1,27 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
     public Controls input;
-    [SerializeField] private int speed = 15;
-    public Joystick joystick;
 
-    public int life = 20;
-    public Collider HitCol;
-    Vector3 dir;
+    [Header("Health Values")]
+    public HealthBar healthBar;
+    public int MaxLife = 20;
+    public int currentLife;
 
+    public int speed;
     Rigidbody rb;
-    public float jumpForce;
+    public Collider HitCol;
 
     void Start()
     {
+        currentLife = MaxLife;
+
         input = new Controls();
         input.Enable();
-
+        //input.Player.Movement.performed += Move;
         rb = GetComponent<Rigidbody>();
     }
 
@@ -29,35 +30,24 @@ public class Player : MonoBehaviour
     {
         input.Disable();
     }
-    private void FixedUpdate()
-    {
-        rb.velocity = new Vector3(dir.x * speed, 0, dir.z * speed);
-    }
-    public void Jump(InputAction.CallbackContext ctx)
-    {
-        rb.AddForce(0, jumpForce, 0, ForceMode.Impulse);
-    }
 
     public void Move(InputAction.CallbackContext ctx)
     {
-        dir = ctx.ReadValue<Vector3>();
+        Vector3 dir = ctx.ReadValue<Vector3>();
+        rb.velocity = new Vector3(dir.x * speed, 0, dir.z * speed);
     }
 
+    void Update()
+    {
+        Keyboard kb = InputSystem.GetDevice<Keyboard>(); 
+    }
 
     //Coroutine for player receiving damage
-    IEnumerator ReceiveDamage()
+    IEnumerator ReceiveDamage(int damage)
     {
         HitCol.enabled = false;
-        life = life - 2;
+        currentLife = currentLife -= damage;
         yield return new WaitForSeconds(2);
         HitCol.enabled = true;
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Finish"))
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        }
     }
 }

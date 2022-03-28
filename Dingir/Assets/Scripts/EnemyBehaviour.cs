@@ -6,12 +6,12 @@ public class EnemyBehaviour : MonoBehaviour
 {
     
     [HideInInspector] Rigidbody rb;
-    [HideInInspector] BoxCollider boxCol;
-    public Player player;
+    [HideInInspector] BoxCollider BoxCol;
+    public Player Player;
 
     [Header("Targets")]
-    public GameObject target;
-    public Transform targetTransform;
+    public GameObject Target;
+    public Transform Target_Transform;
     
     [Header("Enemy Variables")]
     [SerializeField] float speed;
@@ -29,12 +29,12 @@ public class EnemyBehaviour : MonoBehaviour
         RaycastHit hit;
 
         Vector3 Right = transform.TransformDirection(Vector3.right);
-        Vector3 toTarget = targetTransform.position - transform.position;
+        Vector3 toTarget = Target_Transform.position - transform.position;
 
         Ray ray = new Ray(transform.position, transform.TransformDirection(toTarget));
 
         //Enemy direction towards Target_Transform variable
-        if (targetTransform /*Objetivo del enemigo*/)
+        if (Target_Transform /*Objetivo del enemigo*/)
         {
             if (Vector3.Dot(Right, toTarget) > 0)
             {
@@ -66,13 +66,13 @@ public class EnemyBehaviour : MonoBehaviour
     void Attack()
     {
         print("Hit someone");
-        player.StartCoroutine("ReceiveDamage");
+        Player.StartCoroutine("ReceiveDamage", 2);
     }
 
     //Moving behaviour
     void Move()
     {
         float movement = speed * Time.deltaTime;
-        this.transform.position = Vector3.MoveTowards(transform.position, target.transform.position, movement);
+        this.transform.position = Vector3.MoveTowards(transform.position, Target.transform.position, movement);
     }
 }
