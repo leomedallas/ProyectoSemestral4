@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
 {
     public Controls input;
     [SerializeField] private int speed = 15;
+    public Joystick joystick;
 
     public int life = 20;
     public Collider HitCol;
@@ -34,7 +35,7 @@ public class Player : MonoBehaviour
     }
     public void Jump(InputAction.CallbackContext ctx)
     {
-        rb.AddForce(transform.up * jumpForce);
+        rb.AddForce(0, jumpForce, 0, ForceMode.Impulse);
     }
 
     public void Move(InputAction.CallbackContext ctx)

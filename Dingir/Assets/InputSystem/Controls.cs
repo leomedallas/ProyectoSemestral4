@@ -31,7 +31,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""name"": ""Movement"",
                     ""type"": ""Value"",
                     ""id"": ""bd195833-9c14-4357-bef3-2a9a3e90723d"",
-                    ""expectedControlType"": ""Vector3"",
+                    ""expectedControlType"": ""Vector2"",
                     ""processors"": ""NormalizeVector3"",
                     ""interactions"": """",
                     ""initialStateCheck"": true
@@ -101,6 +101,17 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7fc2e117-a4d9-4068-b150-274a4e3090b8"",
+                    ""path"": ""<AndroidJoystick>/stick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
