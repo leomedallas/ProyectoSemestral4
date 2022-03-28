@@ -66,7 +66,7 @@ public class EnemyBehaviour : MonoBehaviour
     void Attack()
     {
         print("Hit someone");
-        Player.StartCoroutine("ReceiveDamage");
+        Player.StartCoroutine("ReceiveDamage", 2);
     }
 
     //Moving behaviour

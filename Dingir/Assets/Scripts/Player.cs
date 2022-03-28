@@ -6,13 +6,20 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     public Controls input;
-    public int life = 20;
+
+    [Header("Health Values")]
+    public HealthBar healthBar;
+    public int MaxLife = 20;
+    public int currentLife;
+
     public int speed;
     Rigidbody rb;
     public Collider HitCol;
 
     void Start()
     {
+        currentLife = MaxLife;
+
         input = new Controls();
         input.Enable();
         //input.Player.Movement.performed += Move;
@@ -36,10 +43,10 @@ public class Player : MonoBehaviour
     }
 
     //Coroutine for player receiving damage
-    IEnumerator ReceiveDamage()
+    IEnumerator ReceiveDamage(int damage)
     {
         HitCol.enabled = false;
-        life = life - 2;
+        currentLife = currentLife -= damage;
         yield return new WaitForSeconds(2);
         HitCol.enabled = true;
     }
