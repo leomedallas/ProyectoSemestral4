@@ -7,19 +7,22 @@ public class EnemyBehaviour : MonoBehaviour
     public Player Player;
 
     [Header("Target Values")]
-    public GameObject target;
     public Transform targetTransform;
+    Rigidbody rb;
     
     [Header("Enemy Values")]
     [SerializeField] float speed;
     public HealthBar healthBar;
     public int maxHealth;
     public int currentHealth;
+    float minDistance = 1f;
 
     public static EnemyBehaviour instance;
 
     void Start()
     {
+        rb = GetComponent<Rigidbody>();
+
         if (this.gameObject.CompareTag("LittleEnemy"))
             maxHealth = 10;
         else if (this.gameObject.CompareTag("BigEnemy"))
@@ -32,9 +35,11 @@ public class EnemyBehaviour : MonoBehaviour
     }
 
 
-    void Update()
+    void FixedUpdate()
     {
         //Update Variables
+        Vector3 direction = targetTransform.position - transform.position;
+
         RaycastHit hit;
 
         Vector3 right = transform.TransformDirection(Vector3.right);
@@ -59,7 +64,7 @@ public class EnemyBehaviour : MonoBehaviour
         }
         else
         {
-            Move();
+            Move(direction);
         }
     }
 
@@ -71,10 +76,9 @@ public class EnemyBehaviour : MonoBehaviour
     }
 
     //Moving behaviour
-    void Move()
+    void Move(Vector3 dir)
     {
-        float movement = speed * Time.deltaTime;
-        this.transform.position = Vector3.MoveTowards(transform.position, target.transform.position, movement);
+        rb.MovePosition((Vector3)transform.position + (dir * speed * Time.deltaTime));
     }
 
     public void TakeDamage(int _damage)
