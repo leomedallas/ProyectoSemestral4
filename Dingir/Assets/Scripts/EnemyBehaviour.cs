@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class EnemyBehaviour : MonoBehaviour
 {
+    
+    [HideInInspector] Rigidbody rb;
+    [HideInInspector] BoxCollider boxCollider;
     public Player Player;
 
     [Header("Target Values")]
@@ -12,23 +15,11 @@ public class EnemyBehaviour : MonoBehaviour
     
     [Header("Enemy Values")]
     [SerializeField] float speed;
-    public HealthBar healthBar;
-    public int maxHealth;
-    public int currentHealth;
-
-    public static EnemyBehaviour instance;
+    [SerializeField] int health;
 
     void Start()
     {
-        if (this.gameObject.CompareTag("LittleEnemy"))
-            maxHealth = 10;
-        else if (this.gameObject.CompareTag("BigEnemy"))
-            maxHealth = 20;
-
-        currentHealth = maxHealth;
-        healthBar.SetMaxHealth(maxHealth);
-
-        instance = this;
+        rb = GetComponent<Rigidbody>();
     }
 
 
@@ -46,9 +37,13 @@ public class EnemyBehaviour : MonoBehaviour
         if (targetTransform /*Objetivo del enemigo*/)
         {
             if (Vector3.Dot(right, toTarget) > 0)
+            {
                 Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.right), Color.yellow);
+            }
             else
+            {
                 Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.left), Color.yellow);
+            }
         }
 
         //Raycast hit detection
@@ -75,11 +70,5 @@ public class EnemyBehaviour : MonoBehaviour
     {
         float movement = speed * Time.deltaTime;
         this.transform.position = Vector3.MoveTowards(transform.position, target.transform.position, movement);
-    }
-
-    public void TakeDamage(int _damage)
-    {
-        currentHealth -= _damage;
-        healthBar.SetHealth(currentHealth);
     }
 }

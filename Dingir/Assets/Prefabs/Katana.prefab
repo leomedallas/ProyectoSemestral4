@@ -1,49 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3162192477856654582
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7125557409654301477}
-  - component: {fileID: 7013164807363748790}
-  m_Layer: 0
-  m_Name: Collider1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7125557409654301477
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3162192477856654582}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 8159264542271196100}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &7013164807363748790
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3162192477856654582}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 13.807376, y: 1.1202382, z: 18.133865}
-  m_Center: {x: 1.961312, y: 0.060119327, z: 3.456678}
 --- !u!1 &8159264542271196101
 GameObject:
   m_ObjectHideFlags: 0
@@ -56,7 +12,7 @@ GameObject:
   - component: {fileID: 8159264542271196105}
   - component: {fileID: 8159264542271196106}
   - component: {fileID: 8159264542271196104}
-  - component: {fileID: 2673756819238076712}
+  - component: {fileID: 1323671587450309155}
   m_Layer: 0
   m_Name: Katana
   m_TagString: Untagged
@@ -74,8 +30,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0.18536684, w: 0.9826694}
   m_LocalPosition: {x: 0.39499998, y: 0.30000007, z: -0.5}
   m_LocalScale: {x: 0.029136444, y: 1.8886001, z: 0.02768633}
-  m_Children:
-  - {fileID: 7125557409654301477}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -21.365}
@@ -147,18 +102,29 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &2673756819238076712
-MonoBehaviour:
+--- !u!61 &1323671587450309155
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8159264542271196101}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47506e24ea38d394291374a1f88ae57c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  combo: 0
-  attacking: 0
-  col1: {fileID: 3162192477856654582}
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.000002, y: 1.0000001}
+  m_EdgeRadius: 0

@@ -13,9 +13,9 @@ public class Player : MonoBehaviour
     public int currentHealth;
 
     [Header("Movement Values")]
+    public int speed;
     Rigidbody rb;
     public Collider HitCol;
-    public int speed;
 
     void Start()
     {
