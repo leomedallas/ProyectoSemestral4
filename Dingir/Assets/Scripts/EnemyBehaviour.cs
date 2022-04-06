@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class EnemyBehaviour : MonoBehaviour
 {
-    
-    [HideInInspector] Rigidbody rb;
-    [HideInInspector] BoxCollider boxCollider;
     public Player Player;
 
     [Header("Target Values")]
@@ -15,11 +12,26 @@ public class EnemyBehaviour : MonoBehaviour
     
     [Header("Enemy Values")]
     [SerializeField] float speed;
-    [SerializeField] int health;
+    public HealthBar healthBar;
+    public int maxHealth;
+    public int currentHealth;
+
+    public static EnemyBehaviour instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        if (this.gameObject.CompareTag("LittleEnemy"))
+            maxHealth = 10;
+        else if (this.gameObject.CompareTag("BigEnemy"))
+            maxHealth = 20;
+
+        currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
     }
 
 
@@ -70,5 +82,12 @@ public class EnemyBehaviour : MonoBehaviour
     {
         float movement = speed * Time.deltaTime;
         this.transform.position = Vector3.MoveTowards(transform.position, target.transform.position, movement);
+    }
+
+    public void TakeDamage(int _damage)
+    {
+        if (this.gameObject.CompareTag("LittleEnemy") || this.gameObject.CompareTag("BigEnemy"))
+            currentHealth -= _damage;
+        healthBar.SetHealth(currentHealth);
     }
 }
