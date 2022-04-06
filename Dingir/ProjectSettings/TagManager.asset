@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - PlayerCollider
+  - Enemy
+  - LittleEnemy
+  - BigEnemy
   layers:
   - Default
   - TransparentFX

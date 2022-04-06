@@ -6,12 +6,15 @@ using UnityEngine.InputSystem;
 public class Katana : MonoBehaviour
 {
     Animator anim;
+    public GameObject col1;
+
     public int combo;
     public bool attacking;
 
     private void Start()
     {
         anim = GetComponent<Animator>();
+        col1.gameObject.SetActive(false);
     }
 
     private void Update()
@@ -23,6 +26,7 @@ public class Katana : MonoBehaviour
 
     public void StartCombo()
     {
+        col1.gameObject.SetActive(true);
         attacking = false;
         if (combo < 3)
             combo++;
@@ -36,6 +40,7 @@ public class Katana : MonoBehaviour
 
     public void FinishCombo()
     {
+        col1.gameObject.SetActive(false);
         attacking = false;
         combo = 0;
     }
