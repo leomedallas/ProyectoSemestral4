@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     public Controls input;
+    public static Player _instance;
 
     [Header("Health Values")]
     public HealthBar healthBar;
@@ -16,6 +17,11 @@ public class Player : MonoBehaviour
     public int speed;
     Rigidbody rb;
     public Collider HitCol;
+
+    private void Awake()
+    {
+        _instance = this;
+    }
 
     void Start()
     {
