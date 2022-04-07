@@ -17,6 +17,8 @@ public class Player : MonoBehaviour
     public int speed;
     Rigidbody rb;
     public Collider HitCol;
+    public float direction;
+    public float rotateSpeed;
 
     private void Awake()
     {
@@ -30,7 +32,6 @@ public class Player : MonoBehaviour
 
         input = new Controls();
         input.Enable();
-        //input.Player.Movement.performed += Move;
         rb = GetComponent<Rigidbody>();
     }
 
@@ -43,11 +44,11 @@ public class Player : MonoBehaviour
     {
         Vector3 dir = ctx.ReadValue<Vector3>();
         rb.velocity = new Vector3(dir.x * speed, 0, dir.z * speed);
-    }
+        Debug.Log(dir);
 
-    void Update()
-    {
-        //Keyboard kb = InputSystem.GetDevice<Keyboard>(); 
+        Vector3 pointToView = transform.position + dir;
+
+        transform.LookAt(pointToView);
     }
 
     public void TakeDamage(int _damage)
