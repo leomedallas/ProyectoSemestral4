@@ -6,9 +6,14 @@ public class KatanaCollider : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("LittleEnemy") || other.gameObject.CompareTag("BigEnemy"))
+        if(other.gameObject.CompareTag("BigEnemy"))
         {
-            EnemyBehaviour.instance.TakeDamage(1);
+            BigEnemy._instance.TakeDamage(1);
+        }
+
+        if (other.gameObject.CompareTag("LittleEnemy"))
+        {
+            LittleEnemy._instance.TakeDamage(1);
         }
     }
 }
