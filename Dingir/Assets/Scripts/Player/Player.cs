@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
 
     [Header("Movement Values")]
     public int speed;
+    Animator anim;
     Rigidbody rb;
     public Collider HitCol;
     public float direction;
@@ -43,6 +44,7 @@ public class Player : MonoBehaviour
         input = new Controls();
         input.Enable();
         rb = GetComponent<Rigidbody>();
+        anim = GetComponent<Animator>();
         StartCoroutine("DesactiveCollider");
     }
 
@@ -54,6 +56,7 @@ public class Player : MonoBehaviour
     public void Move(InputAction.CallbackContext ctx)
     {
         Vector3 dir = ctx.ReadValue<Vector3>();
+        anim.SetBool("Running", dir != Vector3.zero);
         rb.velocity = new Vector3(dir.x * speed, 0, dir.z * speed);
         Debug.Log(dir);
 
