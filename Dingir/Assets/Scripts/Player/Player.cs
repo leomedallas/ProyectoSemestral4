@@ -29,8 +29,14 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject Dialogue1;
     [SerializeField] GameObject hb;
 
+    [Header("Attack")]
+    public GameObject col;
+    public int combo;
+    public bool attacking;
+
     [Header("EnemiesActive")]
     [SerializeField] GameObject LittleEnemy;
+    
     private void Awake()
     {
         _instance = this;
@@ -46,6 +52,13 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
         StartCoroutine("DesactiveCollider");
+    }
+
+    private void Update()
+    {
+        bool space = Keyboard.current.spaceKey.wasPressedThisFrame;
+        if (space && !attacking)
+            Combo();
     }
 
     private void OnDestroy()
@@ -93,5 +106,28 @@ public class Player : MonoBehaviour
         TakeDamage(_damage);
         yield return new WaitForSeconds(2);
         HitCol.enabled = true;
+    }
+
+    public void StartCombo()
+    {
+        attacking = false;
+        if (combo < 3)
+            combo++;
+
+        col.SetActive(true);
+    }
+
+    public void Combo()
+    {
+        attacking = true;
+        anim.SetTrigger("" + combo);
+    }
+
+    public void FinishCombo()
+    {
+        attacking = false;
+        combo = 0;
+
+        col.SetActive(false);
     }
 }
