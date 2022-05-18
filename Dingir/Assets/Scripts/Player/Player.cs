@@ -8,6 +8,7 @@ using TMPro;
 
 public class Player : MonoBehaviour
 {
+    #region variables
     public Controls input;
     public static Player _instance;
 
@@ -36,7 +37,7 @@ public class Player : MonoBehaviour
 
     [Header("EnemiesActive")]
     [SerializeField] GameObject LittleEnemy;
-    
+    #endregion
     private void Awake()
     {
         _instance = this;
