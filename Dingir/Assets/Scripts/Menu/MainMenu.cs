@@ -7,12 +7,12 @@ public class MainMenu : MonoBehaviour
 {
     public void Continue()
     {
-        //Saved data load
+        PlayerData playerData = SaveManager.LoadPlayerData();
     }
 
     public void NewGame()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
 
     public void Exit()
