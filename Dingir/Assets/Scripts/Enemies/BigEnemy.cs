@@ -5,6 +5,7 @@ using UnityEngine;
 public class BigEnemy : Enemy, IEnemy
 {
     public static BigEnemy _instance;
+    [SerializeField] Animator anmtr;
 
     private void Awake()
     {
@@ -14,7 +15,7 @@ public class BigEnemy : Enemy, IEnemy
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-
+        
         maxHealth = 20;
         speed = 0.2f;
 
@@ -35,7 +36,8 @@ public class BigEnemy : Enemy, IEnemy
     {
         //Update Variables
         Vector3 direction = targetTransform.position - transform.position;
-
+        Vector3 pointToView = transform.position + direction;
+        transform.LookAt(pointToView);
         RaycastHit hit;
 
         Vector3 right = transform.TransformDirection(Vector3.right);
@@ -61,6 +63,7 @@ public class BigEnemy : Enemy, IEnemy
         else
         {
             Move(direction);
+            anmtr.SetBool("isAttacking", false);
         }
     }
 
@@ -68,6 +71,8 @@ public class BigEnemy : Enemy, IEnemy
     public void Attack()
     {
         Player._instance.StartCoroutine("ReceiveDamage", 2);
+        anmtr.SetBool("isAttacking", true);
+
     }
 
     //Moving behaviour

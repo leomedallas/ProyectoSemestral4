@@ -35,7 +35,8 @@ public class LittleEnemy : Enemy, IEnemy
     {
         //Update Variables
         Vector3 direction = targetTransform.position - transform.position;
-
+        Vector3 pointToView = transform.position + direction;
+        transform.LookAt(pointToView);
         RaycastHit hit;
 
         Vector3 right = transform.TransformDirection(Vector3.right);
