@@ -5,11 +5,20 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/1_DingirAssets/Scenes/Tutorial.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
+    path: Assets/Scenes/BootScene.unity
+    guid: 2f39baa6de530dd40be4aa0a5928f6cf
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/1_DingirAssets/Scenes/PlayerAttackTest.unity
-    guid: 29f12ea294207cd479312b1c4e95d9ae
+    path: Assets/Scenes/Main_Menu.unity
+    guid: ffce4ff9a3ebd744b80b3c5bcf8f603a
+  - enabled: 1
+    path: Assets/Scenes/Tutorial.unity
+    guid: 0c31a02bc36e7584c80eb1b663587511
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: b49b8e994cab22d44914a841410b14d9, type: 2}
