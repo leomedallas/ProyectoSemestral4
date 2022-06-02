@@ -6,7 +6,7 @@ using TMPro;
 
 public class TextGod2 : MonoBehaviour
 {
-    string frase = "Es hora de que pruebes\n tu arma elegida";
+    string frase = "Es hora de que pruebes tu arma elegida";
     public TextMeshProUGUI texto;
 
     // Start is called before the first frame update

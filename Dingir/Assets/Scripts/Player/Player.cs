@@ -28,7 +28,9 @@ public class Player : MonoBehaviour
     [Header("UI")]
     [SerializeField] GameObject Dialogue;
     [SerializeField] GameObject Dialogue1;
-    [SerializeField] GameObject hb;
+    [SerializeField] GameObject square;
+    [SerializeField] GameObject susanoo;
+    [SerializeField] GameObject amaterasu;
 
     [Header("Attack")]
     public GameObject col;
@@ -52,7 +54,7 @@ public class Player : MonoBehaviour
         input.Enable();
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
-        //StartCoroutine("DesactiveCollider");
+        StartCoroutine("DesactiveCollider");
     }
 
     private void Update()
@@ -80,19 +82,21 @@ public class Player : MonoBehaviour
     }
     IEnumerator DesactiveCollider()
     {
-        hb.SetActive(false);
         Dialogue1.SetActive(false);
         rb.constraints = RigidbodyConstraints.FreezeAll;
         yield return new WaitForSeconds(8);
         rb.constraints = RigidbodyConstraints.None;
         rb.constraints = RigidbodyConstraints.FreezeRotation;
         Dialogue.SetActive(false);
-        hb.SetActive(true);
+        susanoo.SetActive(false);
         Dialogue1.SetActive(true);
+        amaterasu.SetActive(true);
         yield return new WaitForSeconds(5);
         Dialogue1.SetActive(false);
-        yield return new WaitForSeconds(5);
-        LittleEnemy.SetActive(true);
+        square.SetActive(false);
+        amaterasu.SetActive(false);
+        //yield return new WaitForSeconds(5);
+        //LittleEnemy.SetActive(true);
     }
     public void TakeDamage(int _damage)
     {
