@@ -52,7 +52,7 @@ public class Player : MonoBehaviour
         input.Enable();
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
-        StartCoroutine("DesactiveCollider");
+        //StartCoroutine("DesactiveCollider");
     }
 
     private void Update()

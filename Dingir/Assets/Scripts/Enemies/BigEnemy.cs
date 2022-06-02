@@ -55,7 +55,7 @@ public class BigEnemy : Enemy, IEnemy
         }
 
         //Raycast hit detection
-        if (Physics.Raycast(ray, out hit, 1))
+        if (Physics.Raycast(ray, out hit, 3.5f))
         {
             if (hit.collider.isTrigger)
                 Attack();
@@ -70,7 +70,7 @@ public class BigEnemy : Enemy, IEnemy
     //Attacking behaviour
     public void Attack()
     {
-        Player._instance.StartCoroutine("ReceiveDamage", 2);
+        Player._instance.StartCoroutine("ReceiveDamage", 1);
         anmtr.SetBool("isAttacking", true);
 
     }

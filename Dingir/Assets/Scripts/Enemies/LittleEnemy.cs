@@ -48,13 +48,13 @@ public class LittleEnemy : Enemy, IEnemy
         if (targetTransform)
         {
             if (Vector3.Dot(right, toTarget) > 0)
-                Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.right), Color.yellow);
+                Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward), Color.yellow);
             else
-                Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.left), Color.yellow);
+                Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.back), Color.yellow);
         }
 
         //Raycast hit detection
-        if (Physics.Raycast(ray, out hit, 1))
+        if (Physics.Raycast(ray, out hit, 3f))
         {
             if (hit.collider.isTrigger)
                 Attack();
@@ -68,7 +68,7 @@ public class LittleEnemy : Enemy, IEnemy
     //Attacking behaviour
     public void Attack()
     {
-        Player._instance.StartCoroutine("ReceiveDamage", 2);
+        Player._instance.StartCoroutine("ReceiveDamage", 1);
     }
 
     //Moving behaviour
