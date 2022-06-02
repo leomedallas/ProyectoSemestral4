@@ -8,12 +8,12 @@ public class KatanaCollider : MonoBehaviour
     {
         if(other.gameObject.CompareTag("BigEnemy"))
         {
-            BigEnemy._instance.TakeDamage(1);
+            //BigEnemy._instance.TakeDamage(1);
         }
 
         if (other.gameObject.CompareTag("LittleEnemy"))
         {
-            LittleEnemy._instance.TakeDamage(1);
+            //LittleEnemy._instance.TakeDamage(1);
         }
     }
 }

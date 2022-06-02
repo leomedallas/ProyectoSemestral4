@@ -1988,8 +1988,7 @@ GameObject:
   - component: {fileID: 8346543284695151477}
   - component: {fileID: 2680992192370108687}
   - component: {fileID: 8385238067662700396}
-  - component: {fileID: 8385238067662700399}
-  - component: {fileID: 8385238067662700398}
+  - component: {fileID: 4071643448817885720}
   m_Layer: 0
   m_Name: Shinigami
   m_TagString: Untagged
@@ -2048,21 +2047,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
---- !u!136 &8385238067662700399
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8691718899564898767}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5995972
-  m_Height: 2.2842908
-  m_Direction: 1
-  m_Center: {x: -0.050508827, y: 1.0154736, z: 0}
---- !u!114 &8385238067662700398
+--- !u!114 &4071643448817885720
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2074,13 +2059,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 084692df7b7801f4b89374104e61dd69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBar: {fileID: 0}
-  rb: {fileID: 8385238067662700396}
-  target: {fileID: 0}
-  targetTransform: {fileID: 0}
-  speed: 5
-  maxHealth: 20
-  currentHealth: 0
+  anim: {fileID: 0}
+  agent: {fileID: 0}
+  player: {fileID: 0}
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 0
+  whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 0
+  health: 0
+  walkPoint: {x: 0, y: 0, z: 0}
+  walkPointRange: 0
+  projectile: {fileID: 0}
+  cooldown: 0
+  sightRange: 0
+  attackRange: 0
+  playerInSightRange: 0
+  playerInAttackRange: 0
 --- !u!1 &8712112038403021761
 GameObject:
   m_ObjectHideFlags: 0

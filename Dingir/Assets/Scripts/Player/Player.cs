@@ -73,6 +73,7 @@ public class Player : MonoBehaviour
     {
         Vector3 dir = ctx.ReadValue<Vector3>();
         anim.SetBool("Running", dir != Vector3.zero);
+        anim.SetBool("IsHit", false);
         rb.velocity = new Vector3(dir.x * speed, 0, dir.z * speed);
         Debug.Log(dir);
 
@@ -95,22 +96,13 @@ public class Player : MonoBehaviour
         Dialogue1.SetActive(false);
         square.SetActive(false);
         amaterasu.SetActive(false);
-        //yield return new WaitForSeconds(5);
-        //LittleEnemy.SetActive(true);
-    }
-    public void TakeDamage(int _damage)
-    {
-        currentHealth -= _damage;
-        healthBar.SetHealth(currentHealth);
     }
 
-    //Coroutine for player receiving damage
-    IEnumerator ReceiveDamage(int _damage)
+    public void TakeDamage(int _damage)
     {
-        HitCol.enabled = false;
-        TakeDamage(_damage);
-        yield return new WaitForSeconds(2);
-        HitCol.enabled = true;
+        anim.SetBool("IsHit", true);
+        currentHealth -= _damage;
+        healthBar.SetHealth(currentHealth);
     }
 
     public void StartCombo()
@@ -134,5 +126,18 @@ public class Player : MonoBehaviour
         combo = 0;
 
         col.SetActive(false);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("BigEnemyCollider"))
+        {
+            TakeDamage(3);
+        }
+        
+        if (other.gameObject.CompareTag("LittleEnemyCollider"))
+        {
+            TakeDamage(1);
+        }
     }
 }

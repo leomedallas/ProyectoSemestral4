@@ -1,85 +1,158 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
-public class LittleEnemy : Enemy, IEnemy
+public class LittleEnemy : MonoBehaviour
 {
-    public static LittleEnemy _instance;
+    public Animator anim;
+    public GameObject coll;
+
+    [Header("NavMesh")]
+    public NavMeshAgent agent;
+    public Transform player;
+    public LayerMask whatIsGround;
+    public LayerMask whatIsPlayer;
+
+    [Header("Stats")]
+    public HealthBar healthBar;
+    public int maxHealth = 20;
+    public int currentHealth;
+
+    [Header("Patroling")]
+    public Vector3 walkPoint;
+    bool walkPointSet;
+    public float walkPointRange;
+
+    [Header("Attacking")]
+    public float cooldown;
+    bool alreadyAttacked;
+
+    [Header("States")]
+    public float sightRange;
+    public float attackRange;
+    public bool playerInSightRange;
+    public bool playerInAttackRange;
 
     private void Awake()
     {
-        _instance = this;
+        //player = GameObject.Find("Player").transform;
+        agent = GetComponent<NavMeshAgent>();
+        anim = GetComponent<Animator>();
     }
 
-    void Start()
+    private void Start()
     {
-        rb = GetComponent<Rigidbody>();
-
-        maxHealth = 10;
-        speed = 0.5f;
-
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
     }
 
-    void Update()
+    private void Update()
     {
-        if (this.currentHealth == 0)
-        {
-            this.gameObject.SetActive(false);
-            Destroy(this);
-        }   
+        // Check for sight and attack range
+        playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
+        playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
+
+        if (!playerInSightRange && !playerInAttackRange) Patroling();
+        if (playerInSightRange && !playerInAttackRange) ChasePlayer();
+        if (playerInAttackRange && playerInSightRange) AttackPlayer();
     }
 
-    void FixedUpdate()
+    private void Patroling()
     {
-        //Update Variables
-        Vector3 direction = targetTransform.position - transform.position;
-        Vector3 pointToView = transform.position + direction;
-        transform.LookAt(pointToView);
-        RaycastHit hit;
+        anim.SetBool("isAttacking", false);
 
-        Vector3 right = transform.TransformDirection(Vector3.right);
-        Vector3 toTarget = targetTransform.position - transform.position;
+        if (!walkPointSet) SearchWalkPoint();
 
-        Ray ray = new Ray(transform.position, transform.TransformDirection(toTarget));
+        if (walkPointSet)
+            agent.SetDestination(walkPoint);
 
-        //Enemy direction towards Target_Transform variable
-        if (targetTransform)
+        Vector3 distanceToWalkPoint = transform.position - walkPoint;
+
+        // Walkpoint reached
+        if (distanceToWalkPoint.magnitude < 1.0f)
+            walkPointSet = false;
+    }
+
+    private void SearchWalkPoint()
+    {
+        // Calculate random point in range
+        float randomZ = Random.Range(-walkPointRange, walkPointRange);
+        float randomX = Random.Range(-walkPointRange, walkPointRange);
+
+        walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
+
+        if (Physics.Raycast(walkPoint, -transform.up, 2.0f, whatIsGround))
+            walkPointSet = true;
+    }
+
+    private void ChasePlayer()
+    {
+        anim.SetBool("isAttacking", false);
+        attackRange = 1.5f;
+
+        agent.SetDestination(player.position);
+    }
+
+    private void AttackPlayer()
+    {
+        // Make sure enemy doesn't move
+        agent.SetDestination(transform.position);
+        transform.LookAt(player);
+
+        if (!alreadyAttacked)
         {
-            if (Vector3.Dot(right, toTarget) > 0)
-                Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward), Color.yellow);
-            else
-                Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.back), Color.yellow);
-        }
+            anim.SetBool("isAttacking", true);
+            agent.SetDestination(transform.position);
+            attackRange = 7.0f;
 
-        //Raycast hit detection
-        if (Physics.Raycast(ray, out hit, 3f))
-        {
-            if (hit.collider.isTrigger)
-                Attack();
-        }
-        else
-        {
-            Move(direction);
+            alreadyAttacked = true;
+            Invoke(nameof(ResetAttack), cooldown);
         }
     }
 
-    //Attacking behaviour
-    public void Attack()
+    private void ResetAttack()
     {
-        Player._instance.StartCoroutine("ReceiveDamage", 1);
-    }
-
-    //Moving behaviour
-    public void Move(Vector3 dir)
-    {
-        rb.MovePosition((Vector3)transform.position + (dir * speed * Time.deltaTime));
+        alreadyAttacked = false;
     }
 
     public void TakeDamage(int _damage)
     {
         currentHealth -= _damage;
         healthBar.SetHealth(currentHealth);
+
+        if (currentHealth == 0)
+            DestroyEnemy();
+    }
+
+    public void DestroyEnemy()
+    {
+        Destroy(gameObject);
+    }
+
+    public void ActivateCollider()
+    {
+        coll.SetActive(true);
+    }
+
+    public void DeactivateCollider()
+    {
+        coll.SetActive(false);
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, attackRange);
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, sightRange);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Katana"))
+        {
+            TakeDamage(5);
+        }
     }
 }

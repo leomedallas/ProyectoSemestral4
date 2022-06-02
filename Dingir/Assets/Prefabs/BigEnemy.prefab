@@ -396,6 +396,7 @@ GameObject:
   - component: {fileID: 4435777959548732825}
   - component: {fileID: 4435777959548732830}
   - component: {fileID: 7085133711337577784}
+  - component: {fileID: 2750103233711280485}
   m_Layer: 0
   m_Name: BigEnemy
   m_TagString: BigEnemy
@@ -497,3 +498,40 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
+--- !u!114 &2750103233711280485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4435777959548732831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 084692df7b7801f4b89374104e61dd69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBar: {fileID: 0}
+  rb: {fileID: 0}
+  target: {fileID: 0}
+  targetTransform: {fileID: 0}
+  speed: 0
+  maxHealth: 0
+  currentHealth: 0
+  anim: {fileID: 0}
+  agent: {fileID: 0}
+  player: {fileID: 0}
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 0
+  whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 0
+  health: 0
+  walkPoint: {x: 0, y: 0, z: 0}
+  walkPointRange: 0
+  projectile: {fileID: 0}
+  cooldown: 0
+  sightRange: 0
+  attackRange: 0
+  playerInSightRange: 0
+  playerInAttackRange: 0
