@@ -25,10 +25,10 @@ public class Player : MonoBehaviour
     public float direction;
     public float rotateSpeed;
 
-    [Header("UI")]
-    [SerializeField] GameObject Dialogue;
-    [SerializeField] GameObject Dialogue1;
-    [SerializeField] GameObject hb;
+    //[Header("UI")]
+    //[SerializeField] GameObject Dialogue;
+    //[SerializeField] GameObject Dialogue1;
+    //[SerializeField] GameObject hb;
 
     [Header("Attack")]
     public GameObject col;
@@ -78,7 +78,7 @@ public class Player : MonoBehaviour
 
         transform.LookAt(pointToView);
     }
-    IEnumerator DesactiveCollider()
+    /*IEnumerator DesactiveCollider()
     {
         hb.SetActive(false);
         Dialogue1.SetActive(false);
@@ -93,7 +93,8 @@ public class Player : MonoBehaviour
         Dialogue1.SetActive(false);
         yield return new WaitForSeconds(5);
         LittleEnemy.SetActive(true);
-    }
+    }*/
+
     public void TakeDamage(int _damage)
     {
         currentHealth -= _damage;

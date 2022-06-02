@@ -63358,6 +63358,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stone Floor prefab (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 1478736085690048, guid: ffa4d200e6c7d9c4b90b3764b7ed86d4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4004965118951458, guid: ffa4d200e6c7d9c4b90b3764b7ed86d4, type: 3}
       propertyPath: m_RootOrder
       value: 8
