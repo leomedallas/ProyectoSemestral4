@@ -7,6 +7,7 @@ public class BigEnemy : MonoBehaviour
 {
     public Animator anim;
     public GameObject coll;
+    EnemySpawner spawner;
 
     [Header("NavMesh")]
     public NavMeshAgent agent;
@@ -36,13 +37,14 @@ public class BigEnemy : MonoBehaviour
 
     private void Awake()
     {
-        //player = GameObject.Find("Player").transform;
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
+        player = FindObjectOfType<Player>().transform;
     }
 
     private void Start()
     {
+        spawner = EnemySpawner.Instance;
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
     }
@@ -122,7 +124,10 @@ public class BigEnemy : MonoBehaviour
         healthBar.SetHealth(currentHealth);
 
         if (currentHealth == 0)
+        {
+            spawner.killCount += 1;
             DestroyEnemy();
+        }  
     }
 
     public void DestroyEnemy()
@@ -152,6 +157,7 @@ public class BigEnemy : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Katana"))
         {
+            Debug.Log("Ay");
             TakeDamage(5);
         }
     }

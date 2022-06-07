@@ -8,9 +8,9 @@ using TMPro;
 
 public class Player : MonoBehaviour
 {
-    #region variables
+    #region Variables
     public Controls input;
-    public static Player _instance;
+    public static Player Instance;
 
     [Header("Health Values")]
     public HealthBar healthBar;
@@ -40,9 +40,10 @@ public class Player : MonoBehaviour
     [Header("EnemiesActive")]
     [SerializeField] GameObject LittleEnemy;
     #endregion
+
     private void Awake()
     {
-        _instance = this;
+        Instance = this;
     }
 
     void Start()
@@ -75,7 +76,6 @@ public class Player : MonoBehaviour
         anim.SetBool("Running", dir != Vector3.zero);
         anim.SetBool("IsHit", false);
         rb.velocity = new Vector3(dir.x * speed, 0, dir.z * speed);
-        Debug.Log(dir);
 
         Vector3 pointToView = transform.position + dir;
 
