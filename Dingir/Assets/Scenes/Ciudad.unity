@@ -3855,7 +3855,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9032626616382734602, guid: 490ef0578e6cc824cb82d6ecb7e34285, type: 3}
   m_PrefabInstance: {fileID: 9032626616413179191}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1287058857}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 206bdc76e5efe724fbc6e8a145cebd3a, type: 3}
@@ -28506,7 +28506,9 @@ MonoBehaviour:
   rotateSpeed: 1
   Dialogue: {fileID: 1867041341}
   Dialogue1: {fileID: 1634405421}
-  hb: {fileID: 1287058857}
+  square: {fileID: 0}
+  susanoo: {fileID: 0}
+  amaterasu: {fileID: 0}
   col: {fileID: 688384345}
   combo: 0
   attacking: 0
@@ -39623,11 +39625,6 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4004965118951458, guid: ffa4d200e6c7d9c4b90b3764b7ed86d4, type: 3}
   m_PrefabInstance: {fileID: 1286368981}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1287058857 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9032626616382734605, guid: 490ef0578e6cc824cb82d6ecb7e34285, type: 3}
-  m_PrefabInstance: {fileID: 9032626616413179191}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1288103817 stripped
 Transform:

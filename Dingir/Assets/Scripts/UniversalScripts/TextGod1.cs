@@ -6,7 +6,7 @@ using TMPro;
 
 public class TextGod1 : MonoBehaviour
 {
-    string frase = "Felicidades, \nhaz sido elegido para un trabajo\n digno de Dioses";
+    string frase = "Felicidades, has sido elegido para un trabajo digno de Dioses";
     public TextMeshProUGUI texto;
 
     // Start is called before the first frame update
