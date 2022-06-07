@@ -229,7 +229,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3fded023896137e419793f05175d7f6d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -15.23
+      value: -18.49
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3fded023896137e419793f05175d7f6d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -237,7 +237,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3fded023896137e419793f05175d7f6d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.97
+      value: -11.29
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3fded023896137e419793f05175d7f6d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1071,7 +1071,7 @@ GameObject:
   - component: {fileID: 624707749}
   m_Layer: 0
   m_Name: SpawnPlace (2)
-  m_TagString: Untagged
+  m_TagString: BossSpawnPoint
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1305,7 +1305,7 @@ GameObject:
   - component: {fileID: 894160825}
   m_Layer: 0
   m_Name: SpawnPlace
-  m_TagString: Untagged
+  m_TagString: BossSpawnPoint
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1398,6 +1398,11 @@ MonoBehaviour:
   HitCol: {fileID: 0}
   direction: 0
   rotateSpeed: 1
+  Dialogue: {fileID: 0}
+  Dialogue1: {fileID: 0}
+  square: {fileID: 0}
+  susanoo: {fileID: 0}
+  amaterasu: {fileID: 0}
   col: {fileID: 1296102803}
   combo: 0
   attacking: 0
@@ -1463,6 +1468,8 @@ GameObject:
   - component: {fileID: 911558473}
   - component: {fileID: 911558472}
   - component: {fileID: 911558471}
+  - component: {fileID: 911558476}
+  - component: {fileID: 911558475}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Untagged
@@ -1547,6 +1554,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &911558475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 911558470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73460550d2340384f81d056ec7302585, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &911558476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 911558470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 554cc77fa0e04a24eac26734957f9bed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnPoints: []
 --- !u!4 &959815332 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4004965118951458, guid: ffa4d200e6c7d9c4b90b3764b7ed86d4, type: 3}
@@ -1989,7 +2021,7 @@ GameObject:
   - component: {fileID: 1424061107}
   m_Layer: 0
   m_Name: SpawnPlace (3)
-  m_TagString: Untagged
+  m_TagString: BossSpawnPoint
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2002,7 +2034,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1424061106}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.28999996, y: 0, z: -1.37}
+  m_LocalPosition: {x: -0.28999996, y: 0, z: -2.55}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1792214281}
@@ -2267,7 +2299,7 @@ GameObject:
   - component: {fileID: 1538833777}
   m_Layer: 0
   m_Name: SpawnPlace (1)
-  m_TagString: Untagged
+  m_TagString: BossSpawnPoint
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2280,7 +2312,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1538833776}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.889999, y: 0, z: -1.37}
+  m_LocalPosition: {x: -8.889999, y: 0, z: -2.55}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1792214281}
@@ -2540,7 +2572,7 @@ GameObject:
   - component: {fileID: 1652738793}
   m_Layer: 0
   m_Name: SpawnPlace (5)
-  m_TagString: Untagged
+  m_TagString: BossSpawnPoint
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2553,7 +2585,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1652738792}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.820001, y: 0, z: -1.37}
+  m_LocalPosition: {x: 8.820001, y: 0, z: -2.55}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1792214281}
@@ -2570,7 +2602,7 @@ GameObject:
   - component: {fileID: 1789764834}
   m_Layer: 0
   m_Name: SpawnPlace (4)
-  m_TagString: Untagged
+  m_TagString: BossSpawnPoint
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
