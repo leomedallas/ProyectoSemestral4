@@ -19223,11 +19223,6 @@ MonoBehaviour:
   HitCol: {fileID: 0}
   direction: 0
   rotateSpeed: 1
-  Dialogue: {fileID: 9032626615285152265}
-  Dialogue1: {fileID: 3386022832503109739}
-  square: {fileID: 1213461791}
-  susanoo: {fileID: 1686199800}
-  amaterasu: {fileID: 1155932196}
   col: {fileID: 688384345}
   combo: 0
   attacking: 0
