@@ -25,12 +25,12 @@ public class Player : MonoBehaviour
     public float direction;
     public float rotateSpeed;
 
-    [Header("UI")]
+    /*[Header("UI")]
     [SerializeField] GameObject Dialogue;
     [SerializeField] GameObject Dialogue1;
     [SerializeField] GameObject square;
     [SerializeField] GameObject susanoo;
-    [SerializeField] GameObject amaterasu;
+    [SerializeField] GameObject amaterasu;*/
 
     [Header("Attack")]
     public GameObject col;
@@ -55,7 +55,7 @@ public class Player : MonoBehaviour
         input.Enable();
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
-        StartCoroutine("DesactiveCollider");
+        //StartCoroutine("DesactiveCollider");
     }
 
     private void Update()
@@ -81,7 +81,7 @@ public class Player : MonoBehaviour
 
         transform.LookAt(pointToView);
     }
-    IEnumerator DesactiveCollider()
+    /*IEnumerator DesactiveCollider()
     {
         Dialogue1.SetActive(false);
         rb.constraints = RigidbodyConstraints.FreezeAll;
@@ -96,7 +96,7 @@ public class Player : MonoBehaviour
         Dialogue1.SetActive(false);
         square.SetActive(false);
         amaterasu.SetActive(false);
-    }
+    }*/
 
     public void TakeDamage(int _damage)
     {

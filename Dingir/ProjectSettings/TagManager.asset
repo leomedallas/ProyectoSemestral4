@@ -10,6 +10,8 @@ TagManager:
   - BigEnemyCollider
   - LittleEnemyCollider
   - Katana
+  - BossSpawnPoint
+  - Boss
   layers:
   - Default
   - TransparentFX

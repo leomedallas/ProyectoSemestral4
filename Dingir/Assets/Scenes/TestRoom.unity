@@ -271,6 +271,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: David
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3fded023896137e419793f05175d7f6d, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3fded023896137e419793f05175d7f6d, type: 3}
 --- !u!1 &215939162
@@ -803,7 +807,7 @@ SphereCollider:
   m_GameObject: {fileID: 425909474}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 1.1277488
   m_Center: {x: -0.20790927, y: -0.1796864, z: -0.06565635}
@@ -1398,11 +1402,6 @@ MonoBehaviour:
   HitCol: {fileID: 0}
   direction: 0
   rotateSpeed: 1
-  Dialogue: {fileID: 0}
-  Dialogue1: {fileID: 0}
-  square: {fileID: 0}
-  susanoo: {fileID: 0}
-  amaterasu: {fileID: 0}
   col: {fileID: 1296102803}
   combo: 0
   attacking: 0
@@ -1454,7 +1453,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!1 &911558470
 GameObject:
@@ -1470,9 +1469,10 @@ GameObject:
   - component: {fileID: 911558471}
   - component: {fileID: 911558476}
   - component: {fileID: 911558475}
+  - component: {fileID: 911558477}
   m_Layer: 0
   m_Name: Boss
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1486,10 +1486,10 @@ BoxCollider:
   m_GameObject: {fileID: 911558470}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1, z: 2.1753404}
+  m_Center: {x: 0, y: 0, z: 0.6455375}
 --- !u!23 &911558472
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1566,6 +1566,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73460550d2340384f81d056ec7302585, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movScript: {fileID: 911558476}
+  bigCol: {fileID: 425909476}
+  smallCol: {fileID: 911558471}
+  Cooldown: 3
+  Target: {fileID: 0}
+  Attacking: 0
 --- !u!114 &911558476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1578,7 +1584,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 554cc77fa0e04a24eac26734957f9bed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnPoints: []
+  spawnPoints:
+  - {fileID: 894160824}
+  - {fileID: 1538833776}
+  - {fileID: 624707748}
+  - {fileID: 1424061106}
+  - {fileID: 1789764833}
+  - {fileID: 1652738792}
+  currentPoint: {fileID: 0}
+--- !u!65 &911558477
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 911558470}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 0.97557783}
+  m_Center: {x: 0, y: 0, z: 0.029480299}
 --- !u!4 &959815332 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4004965118951458, guid: ffa4d200e6c7d9c4b90b3764b7ed86d4, type: 3}

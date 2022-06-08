@@ -4,48 +4,80 @@ using UnityEngine;
 
 public class AttackBehavoiur : MonoBehaviour
 {
-    Movement movScript;
-    GameObject Target;
-    bool Attacking;
+    public Movement movScript;
+    public Collider bigCol;
+    public Collider smallCol;
+    public float Cooldown = 5f;
+
+    List<System.Func<IEnumerator>> routines = new List<System.Func<IEnumerator>>();
+
+    public GameObject Target;
+    public bool Attacking;
 
     void Start()
     {
+        bigCol.enabled = false;
+        smallCol.enabled = false;
         Attacking = false;
         Target = GameObject.FindGameObjectWithTag("Player");
+
+        routines.Add(Attack1);
+        routines.Add(Attack2);
     }
 
     void Update()
     {
         transform.LookAt(Target.transform);
-        if(Attacking!)
+
+        if(!Attacking && Cooldown>4f)
         {
-            StartCoroutine(changePos());
+            bigCol.enabled = false;
+            smallCol.enabled = false;
+            changePos();
         }
         else
         {
-            StartCoroutine(Attack());
+            Cooldown = Cooldown - Time.deltaTime;
+            StartCoroutine(routines[Random.Range(0,routines.Count)]());
+        }
+
+        if(Cooldown<= 0)
+        {
+            Cooldown = 5f;
         }
     }
 
-    IEnumerator changePos()
+    void changePos()
     {
         Attacking = false;
-
-        yield return new WaitForSeconds(5);
         movScript.posRandomizer();
-        yield return new WaitForSeconds(3);
         movScript.posSpawn(this.transform);
-        yield return new WaitForSeconds(2);
-        
+        Cooldown = 3;
         Attacking = true;
     }
 
-    IEnumerator Attack()
+    void areaAttack()
     {
         Attacking = true;
+        bigCol.enabled = true;
+    }
 
-        yield return new WaitForSeconds(2);
+    void directAttack()
+    {
+        Attacking = true;
+        smallCol.enabled = true;
+    }
 
+    IEnumerator Attack1()
+    {
+        areaAttack();
+        yield return new WaitForSeconds(1);
+        Attacking = false;
+    }
+    IEnumerator Attack2()
+    {
+        directAttack();
+        yield return new WaitForSeconds(1);
         Attacking = false;
     }
 }

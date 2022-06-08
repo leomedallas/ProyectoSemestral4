@@ -5,7 +5,7 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     public  GameObject[] spawnPoints;
-    GameObject currentPoint;
+    public GameObject currentPoint;
     int index;
 
     void Start()
@@ -15,13 +15,12 @@ public class Movement : MonoBehaviour
 
     public void posRandomizer()
     {
-        spawnPoints = GameObject.FindGameObjectsWithTag("BossSpawnPoint");
         index = Random.Range(0, spawnPoints.Length);
         currentPoint = spawnPoints[index];
     }
 
     public void posSpawn(Transform pos)
     {
-        pos = currentPoint.transform;
+        pos.position = currentPoint.transform.position;
     }
 }
