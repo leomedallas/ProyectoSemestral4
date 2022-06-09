@@ -8,6 +8,7 @@ public class EnemySpawner : MonoBehaviour
     public GameObject[] walls;
     public GameObject[] enemies;
     public GameObject go;
+    Player player;
 
     public int killCount;
     int enemyCount;
@@ -28,6 +29,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void Start()
     {
+        player = Player.Instance;
         killCount = 0;
         StartCoroutine(InitEnemy(enemies[0]));
         StartCoroutine(InitEnemy(enemies[0]));
@@ -50,7 +52,6 @@ public class EnemySpawner : MonoBehaviour
         if(killCount >= 2)
         {
             walls[0].SetActive(false);
-            StartCoroutine(TurnOffGo());
             stage1 = true;
         }
 
@@ -65,26 +66,24 @@ public class EnemySpawner : MonoBehaviour
         if(killCount >= 5 && stage1)
         {
             walls[1].SetActive(false);
-            StartCoroutine(TurnOffGo());
             stage2 = true;
         }
 
         if (stage2 && !isCreated2)
         {
-            StartCoroutine(SpawnEnemy(enemies[1], new Vector3(Random.Range(29, 55), 0.5f, Random.Range(-6, 0))));
+            StartCoroutine(SpawnEnemy(enemies[0], new Vector3(Random.Range(29, 55), 0.5f, Random.Range(-6, 0))));
             isCreated2 = true;
         }
 
         if (killCount >= 6 && stage2)
         {
             walls[2].SetActive(false);
-            StartCoroutine(TurnOffGo());
             stage3 = true;
         }
 
         if (stage3 && !isCreated3)
         {
-            StartCoroutine(SpawnEnemy(enemies[1], new Vector3(Random.Range(63, 89), 0.5f, Random.Range(-6, 0))));
+            StartCoroutine(SpawnEnemy(enemies[0], new Vector3(Random.Range(63, 89), 0.5f, Random.Range(-6, 0))));
             StartCoroutine(SpawnEnemy(enemies[0], new Vector3(Random.Range(63, 89), 0.5f, Random.Range(-6, 0))));
             StartCoroutine(SpawnEnemy(enemies[0], new Vector3(Random.Range(63, 89), 0.5f, Random.Range(-6, 0))));
             isCreated3 = true;
@@ -93,21 +92,19 @@ public class EnemySpawner : MonoBehaviour
         if (killCount >= 9 && stage3)
         {
             walls[3].SetActive(false);
-            StartCoroutine(TurnOffGo());
             stage4 = true;
         }
 
         if (stage4 && !isCreated4)
         {
-            StartCoroutine(SpawnEnemy(enemies[1], new Vector3(Random.Range(98, 125), 0.5f, Random.Range(-6, 0))));
-            StartCoroutine(SpawnEnemy(enemies[1], new Vector3(Random.Range(98, 125), 0.5f, Random.Range(-6, 0))));
+            StartCoroutine(SpawnEnemy(enemies[0], new Vector3(Random.Range(98, 125), 0.5f, Random.Range(-6, 0))));
+            StartCoroutine(SpawnEnemy(enemies[0], new Vector3(Random.Range(98, 125), 0.5f, Random.Range(-6, 0))));
             isCreated4 = true;
         }
 
         if (killCount >= 11 && stage4)
         {
             walls[4].SetActive(false);
-            StartCoroutine(TurnOffGo());
             stage5 = true;
         }
     }

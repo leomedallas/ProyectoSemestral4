@@ -7,6 +7,8 @@ public class AttackBehavoiur : MonoBehaviour
     public Movement movScript;
     public Collider bigCol;
     public Collider smallCol;
+    int currentHealth = 50;
+    public HealthBar healthBar;
     public float Cooldown = 5f;
 
     List<System.Func<IEnumerator>> routines = new List<System.Func<IEnumerator>>();
@@ -79,5 +81,19 @@ public class AttackBehavoiur : MonoBehaviour
         directAttack();
         yield return new WaitForSeconds(1);
         Attacking = false;
+    }
+
+    public void TakeDamage(int _damage)
+    {
+        currentHealth -= _damage;
+        healthBar.SetHealth(currentHealth);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Katana"))
+        {
+            TakeDamage(5);
+        }
     }
 }

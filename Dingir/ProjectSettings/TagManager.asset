@@ -12,6 +12,7 @@ TagManager:
   - Katana
   - BossSpawnPoint
   - Boss
+  - BossTrigger
   layers:
   - Default
   - TransparentFX

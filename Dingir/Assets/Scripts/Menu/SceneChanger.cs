@@ -10,6 +10,11 @@ public class SceneChanger : MonoBehaviour
         StartCoroutine(SceneChange());
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R)) SceneManager.LoadScene(2);
+    }
+
     IEnumerator SceneChange()
     {
         yield return new WaitForSeconds(2);

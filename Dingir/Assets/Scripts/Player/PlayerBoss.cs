@@ -6,11 +6,11 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 
-public class Player : MonoBehaviour
+public class PlayerBoss : MonoBehaviour
 {
     #region Variables
     public Controls input;
-    public static Player Instance;
+    public static PlayerBoss Instance;
 
     [Header("Health Values")]
     public HealthBar healthBar;
@@ -19,26 +19,26 @@ public class Player : MonoBehaviour
 
     [Header("Movement Values")]
     public int speed;
-    Animator anim;
+    public Animator anim;
     Rigidbody rb;
     public Collider HitCol;
     public float direction;
     public float rotateSpeed;
 
-    [Header("UI")]
+    /*[Header("UI")]
     [SerializeField] GameObject Dialogue;
     [SerializeField] GameObject Dialogue1;
     [SerializeField] GameObject square;
     [SerializeField] GameObject susanoo;
-    [SerializeField] GameObject amaterasu;
+    [SerializeField] GameObject amaterasu;*/
 
     [Header("Attack")]
     public GameObject col;
     public int combo;
     public bool attacking;
 
-    [Header("EnemiesActive")]
-    [SerializeField] GameObject LittleEnemy;
+    /*[Header("EnemiesActive")]
+    [SerializeField] GameObject LittleEnemy;*/
     #endregion
 
     private void Awake()
@@ -54,8 +54,8 @@ public class Player : MonoBehaviour
         input = new Controls();
         input.Enable();
         rb = GetComponent<Rigidbody>();
-        anim = GetComponent<Animator>();
-        StartCoroutine("DesactiveCollider");
+        //anim = GetComponent<Animator>();
+        //StartCoroutine("DesactiveCollider");
     }
 
     private void Update()
@@ -83,7 +83,7 @@ public class Player : MonoBehaviour
 
         transform.LookAt(pointToView);
     }
-    IEnumerator DesactiveCollider()
+    /*IEnumerator DesactiveCollider()
     {
         Dialogue1.SetActive(false);
         rb.constraints = RigidbodyConstraints.FreezeAll;
@@ -98,7 +98,7 @@ public class Player : MonoBehaviour
         Dialogue1.SetActive(false);
         square.SetActive(false);
         amaterasu.SetActive(false);
-    }
+    }*/
 
     public void TakeDamage(int _damage)
     {
@@ -142,9 +142,14 @@ public class Player : MonoBehaviour
             TakeDamage(1);
         }
 
-        if(other.gameObject.CompareTag("BossTrigger"))
+        if (other.gameObject.CompareTag("Boss"))
+        {
+            TakeDamage(1);
+        }
+
+        /*if(other.gameObject.CompareTag("BossTrigger"))
         {
             SceneManager.LoadScene(3);
-        }
+        }*/
     }
 }
